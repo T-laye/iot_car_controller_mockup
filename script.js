@@ -3,15 +3,48 @@ const right = document.querySelector(".right");
 const reverse = document.querySelector(".reverse");
 const forward = document.querySelector(".forward");
 
+var gateway = "ws://192.168.1.184/ws";
+var websocket;
+
+window.addEventListener("load", onLoad);
+function initWebSocket() {
+  console.log("Trying to open a WebSocket connection...");
+  websocket = new WebSocket(gateway);
+  websocket.onopen = onOpen;
+}
+function onOpen(event) {
+  console.log("Connection opened");
+}
+function onClose(event) {
+  console.log("Connection closed");
+  setTimeout(initWebSocket, 2000);
+}
+
+function onLoad(event) {
+  initWebSocket();
+//   initButton();
+}
+// function initButton() {
+//   document
+//     .getElementById("btn.on")
+//     .addEventListener("click", () => changeState("on"));
+//   document
+//     .getElementById("btn.off")
+//     .addEventListener("click", () => changeState("off"));
+// }
+function changeState(state) {
+  websocket.send(state);
+}
+
 let activeTouches = {}; // Object to track active touches
 
 function onHold(button) {
-  console.log(`${button} button is being held`);
+//   console.log(`${button} button is being held`);
 }
 
 // Function to handle touch start
 function handleTouchStart(event, button) {
-  console.log(`${button} button touched`);
+//   console.log(`${button} button touched`);
   const touchId = event.changedTouches[0].identifier;
 
   // Change button color to yellow
@@ -36,6 +69,30 @@ function handleTouchEnd(event) {
 
   console.log(`${event.target.className} button released`);
 }
+
+// Adding touch event listeners
+left.addEventListener("touchstart", (event) => handleTouchStart(event, "Left"));
+left.addEventListener("touchend", handleTouchEnd);
+
+right.addEventListener("touchstart", (event) =>
+  handleTouchStart(event, "Right")
+);
+right.addEventListener("touchend", handleTouchEnd);
+
+reverse.addEventListener("touchstart", (event) => {
+  handleTouchStart(event, "Reverse");
+});
+reverse.addEventListener("touchend", handleTouchEnd);
+
+forward.addEventListener("touchstart", (event) => {
+  handleTouchStart(event, "Forward");
+  changeState("on");
+});
+
+forward.addEventListener("touchend", (e) => {
+  changeState("off");
+  handleTouchEnd();
+});
 
 left.addEventListener("mousedown", () => {
   console.log("Left button pressed and held");
@@ -76,22 +133,3 @@ forward.addEventListener("mouseup", () => {
   console.log("Forward button released");
   forward.style.color = ""; // Reset to original color
 });
-
-// Adding touch event listeners
-left.addEventListener("touchstart", (event) => handleTouchStart(event, "Left"));
-left.addEventListener("touchend", handleTouchEnd);
-
-right.addEventListener("touchstart", (event) =>
-  handleTouchStart(event, "Right")
-);
-right.addEventListener("touchend", handleTouchEnd);
-
-reverse.addEventListener("touchstart", (event) =>
-  handleTouchStart(event, "Reverse")
-);
-reverse.addEventListener("touchend", handleTouchEnd);
-
-forward.addEventListener("touchstart", (event) =>
-  handleTouchStart(event, "Forward")
-);
-forward.addEventListener("touchend", handleTouchEnd);
