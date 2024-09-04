@@ -39,6 +39,7 @@ main {
 button {
   background-color: transparent;
   border: none;
+  border-radius: 50%;
   /* border: 0.5px solid white; */
 }
 button:active ion-icon {
