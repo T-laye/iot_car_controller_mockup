@@ -22,7 +22,7 @@ function onClose(event) {
 
 function onLoad(event) {
   initWebSocket();
-//   initButton();
+    // initButton();
 }
 // function initButton() {
 //   document
@@ -39,12 +39,12 @@ function changeState(state) {
 let activeTouches = {}; // Object to track active touches
 
 function onHold(button) {
-//   console.log(`${button} button is being held`);
+  //   console.log(`${button} button is being held`);
 }
 
 // Function to handle touch start
 function handleTouchStart(event, button) {
-//   console.log(`${button} button touched`);
+  //   console.log(`${button} button touched`);
   const touchId = event.changedTouches[0].identifier;
 
   // Change button color to yellow
@@ -71,13 +71,23 @@ function handleTouchEnd(event) {
 }
 
 // Adding touch event listeners
-left.addEventListener("touchstart", (event) => handleTouchStart(event, "Left"));
-left.addEventListener("touchend", handleTouchEnd);
+left.addEventListener("touchstart", (event) => {
+  handleTouchStart(event, "Left");
+  changeState("left");
+});
+left.addEventListener("touchend", () => {
+  handleTouchEnd();
+  changeState("straight");
+});
 
-right.addEventListener("touchstart", (event) =>
-  handleTouchStart(event, "Right")
-);
-right.addEventListener("touchend", handleTouchEnd);
+right.addEventListener("touchstart", (event) => {
+  handleTouchStart(event, "Right");
+  changeState("right");
+});
+right.addEventListener("touchend", () => {
+  handleTouchEnd();
+  changeState("straight");
+});
 
 reverse.addEventListener("touchstart", (event) => {
   handleTouchStart(event, "Reverse");
@@ -94,42 +104,43 @@ forward.addEventListener("touchend", (e) => {
   handleTouchEnd();
 });
 
-left.addEventListener("mousedown", () => {
-  console.log("Left button pressed and held");
-  left.style.color = "yellow";
-});
 
-left.addEventListener("mouseup", () => {
-  console.log("Left button released");
-  left.style.color = ""; // Reset to original color
-});
+// left.addEventListener("mousedown", () => {
+//   console.log("Left button pressed and held");
+//   left.style.color = "yellow";
+// });
 
-right.addEventListener("mousedown", () => {
-  console.log("Right button pressed and held");
-  right.style.color = "yellow";
-});
+// left.addEventListener("mouseup", () => {
+//   console.log("Left button released");
+//   left.style.color = ""; // Reset to original color
+// });
 
-right.addEventListener("mouseup", () => {
-  console.log("Right button released");
-  right.style.color = ""; // Reset to original color
-});
+// right.addEventListener("mousedown", () => {
+//   console.log("Right button pressed and held");
+//   right.style.color = "yellow";
+// });
 
-reverse.addEventListener("mousedown", () => {
-  console.log("Reverse button pressed and held");
-  reverse.style.color = "yellow";
-});
+// right.addEventListener("mouseup", () => {
+//   console.log("Right button released");
+//   right.style.color = ""; // Reset to original color
+// });
 
-reverse.addEventListener("mouseup", () => {
-  console.log("Reverse button released");
-  reverse.style.color = ""; // Reset to original color
-});
+// reverse.addEventListener("mousedown", () => {
+//   console.log("Reverse button pressed and held");
+//   reverse.style.color = "yellow";
+// });
 
-forward.addEventListener("mousedown", () => {
-  console.log("Forward button pressed and held");
-  forward.style.color = "yellow";
-});
+// reverse.addEventListener("mouseup", () => {
+//   console.log("Reverse button released");
+//   reverse.style.color = ""; // Reset to original color
+// });
 
-forward.addEventListener("mouseup", () => {
-  console.log("Forward button released");
-  forward.style.color = ""; // Reset to original color
-});
+// forward.addEventListener("mousedown", () => {
+//   console.log("Forward button pressed and held");
+//   forward.style.color = "yellow";
+// });
+
+// forward.addEventListener("mouseup", () => {
+//   console.log("Forward button released");
+//   forward.style.color = ""; // Reset to original color
+// });
