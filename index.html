@@ -6,17 +6,25 @@
     <link rel="stylesheet" href="style.css" />
     <title>Car Controller</title>
   </head>
-  <body >
+  <body>
     <header>
       <h4>IOT Car Controlller</h4>
     </header>
     <main class="container">
-      <div class="dir1">
-        <button class="left">
-          <ion-icon name="arrow-back-circle"></ion-icon>
+      <div class="controls">
+        <button class="speed-up">
+          <ion-icon name="arrow-up-circle"></ion-icon>
         </button>
-        <button class="right">
-          <ion-icon name="arrow-forward-circle"></ion-icon>
+        <div class="dir1">
+          <button class="left">
+            <ion-icon name="arrow-back-circle"></ion-icon>
+          </button>
+          <button class="right">
+            <ion-icon name="arrow-forward-circle"></ion-icon>
+          </button>
+        </div>
+        <button class="speed-down">
+          <ion-icon name="arrow-down-circle"></ion-icon>
         </button>
       </div>
       <div class="dir2">
@@ -27,7 +35,13 @@
           <ion-icon name="arrow-down-circle"></ion-icon>
         </button>
       </div>
+
     </main>
+    <div class="speed-meter">
+      <div class="speed-1 speed"></div>
+      <div class="speed-2 speed"></div>
+      <div class="speed-3 speed"></div>
+    </div>
 
     <script src="./script.js"></script>
     <script
@@ -38,7 +52,5 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-
-     
   </body>
 </html>
