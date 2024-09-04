@@ -46,7 +46,7 @@ button {
 
 button:active ion-icon {
   color: yellow;
-  transform: scale(95);
+  /* transform: scale(95); */
 }
 
 ion-icon {

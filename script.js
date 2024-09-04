@@ -8,10 +8,10 @@ const buttons = {
 const states = {
   left: "left",
   right: "right",
-  reverse: "on",
-  forward: "on",
+  reverse: "reverse",
+  forward: "forward",
   straight: "straight",
-  off: "off",
+  off: "stop",
 };
 
 var gateway = "ws://192.168.1.184/ws";
@@ -52,13 +52,14 @@ function handleTouchEnd(event, button) {
     delete activeTouches[touchId];
   }
   event.target.style.color = "";
+  
+  if(button === 'forward' || button=== 'reverse'){
 
-  console.log(button);
-  if (button === "forward" || button === "reverse") {
-    changeState(states.off);
-  } else if (button === "left" || button === "right") {
-    changeState(states.straight);
-  }
+      changeState(states.off);
+    } else if(button === 'right' || button === 'left'){
+
+        changeState(states.straight);
+    }
 }
 
 Object.keys(buttons).forEach((button) => {
