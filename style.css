@@ -40,10 +40,13 @@ button {
   background-color: transparent;
   border: none;
   border-radius: 50%;
+  transition: all 0.5s ease;
   /* border: 0.5px solid white; */
 }
+
 button:active ion-icon {
   color: yellow;
+  transform: scale(95);
 }
 
 ion-icon {
