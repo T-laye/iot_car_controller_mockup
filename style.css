@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 10px 40px;
+  margin: 0 auto;
+}
+
+body {
+  overflow: hidden;
+  background-color: navy;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+}
+
+header {
+  /* background-color: green; */
+  height: 5vh;
+}
+
+h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}
+
+main {
+  height: 95vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 200px;
+  display: block;
+  color: white;
+}
+
+.dir1 {
+  display: flex;
+}
+
+.dir2 {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  ion-icon {
+    font-size: 150px;
+    display: block;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  ion-icon {
+    font-size: 80px;
+    display: block;
+    color: white;
+  }
+  .container {
+    padding: 20px 20px;
+  }
+}
