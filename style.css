@@ -36,22 +36,30 @@ main {
   align-items: center;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  /* border: 0.5px solid white; */
+}
+button:active ion-icon {
+  color: yellow;
+}
+
 ion-icon {
   font-size: 200px;
   display: block;
   color: white;
 }
-ion-icon:active {
-  color: yellow;
-}
 
 .dir1 {
   display: flex;
+  gap: 20px;
 }
 
 .dir2 {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 @media screen and (max-width: 800px) {
